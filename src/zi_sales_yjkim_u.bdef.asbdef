@@ -1,0 +1,61 @@
+managed implementation in class zbp_i_sales_yjkim_u unique;
+strict ( 2 );
+with draft;
+define behavior for ZI_SALES_YJKIM_U //alias <alias_name>
+persistent table ztsales_yjkim_u
+draft table zdsales_yjkim_u
+with additional save
+etag master LastDt
+lock master total etag LastDt
+authorization master ( instance )
+//etag master <field_name>
+{
+
+  field ( numbering : managed, readonly ) Uuid;
+  //  field ( numbering : late ) salesorder;
+
+  create ( authorization : global );
+  update;
+  delete;
+
+  determination CREATORDERNUM on save { create; }
+
+
+  // field ( features : instance ) salesorder;
+
+  field ( readonly ) salesorder;
+
+  //  field ( readonly : update ) salesorder;
+
+  //  determination creatordernum on modify { create;}
+  //validation validatesalesorder on save { create; field salesorder; }
+
+  //  side effects { determination CREATORDERNUM  affects field salesorder; }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+  // {
+  //  determination creatordernum;
+  // }
+
+
+  static action uploadexcel deep parameter ZD_EXCEL_YJKIM result [0..*] $self;
+  action getexchangerate; // result[1] $self;
+
+  mapping for ztsales_yjkim_u
+    {
+      Uuid         = Uuid;
+      salesorder   = salesorder;
+      ordertype    = order_type;
+      soldtoparty  = sold_to_party;
+      creationdate = creation_date;
+      netamount    = netamount;
+      waerk        = waerk;
+      lastdt       = last_dt;
+      status       = status;
+    }
+
+}

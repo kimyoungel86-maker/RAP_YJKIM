@@ -1,0 +1,6 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+define behavior for ZD_EXCEL_YJKIM //alias <alias_name>
+{
+}
