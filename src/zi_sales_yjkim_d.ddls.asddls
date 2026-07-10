@@ -13,6 +13,8 @@ define root view entity ZI_SALES_YJKIM_D
       @Semantics.amount.currencyCode : 'waerk'
       netamount     as Netamount,
       waerk         as Waerk,
+      @Semantics.user.createdBy: true
+      zname         as createby,
       @Semantics.systemDateTime.lastChangedAt: true
       last_dt       as LastDt,
       status        as Status

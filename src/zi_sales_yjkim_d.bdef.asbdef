@@ -22,9 +22,9 @@ authorization master ( instance )
 
   // field ( features : instance ) salesorder;
 
-  //    field ( readonly ) salesorder;
+  field ( readonly ) salesorder,createby,lastdt;
 
-  field ( readonly : update ) salesorder;
+  //  field ( readonly : update ) salesorder;
 
   //  determination creatordernum on modify { create;}
   //validation validatesalesorder on save { create; field salesorder; }
@@ -51,6 +51,7 @@ authorization master ( instance )
       creationdate = creation_date;
       netamount    = netamount;
       waerk        = waerk;
+      createby     = zname;
       lastdt       = last_dt;
       status       = status;
     }

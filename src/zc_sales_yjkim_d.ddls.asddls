@@ -76,6 +76,10 @@ define root view entity ZC_SALES_YJKIM_D
       } ]
       @EndUserText.label: 'CURRENCY'
       Waerk        as CURRENCY,
+      @UI.hidden: true
+      createby     as createby,
+      @UI.hidden: true
       LastDt       as lastdt,
+      @UI.hidden: true
       Status       as status
 }
