@@ -4,7 +4,7 @@ strict ( 2 );
 define behavior for ZI_SALES_YJKIM_D //alias <alias_name>
 persistent table ztsales_yjkim
 with additional save
-//etag master LastDt
+etag master LastDt
 //lock master total etag LastDt
 lock master
 authorization master ( instance )
@@ -22,9 +22,9 @@ authorization master ( instance )
 
   // field ( features : instance ) salesorder;
 
-  field ( readonly ) salesorder;
+  //    field ( readonly ) salesorder;
 
-//  field ( readonly : update ) salesorder;
+  field ( readonly : update ) salesorder;
 
   //  determination creatordernum on modify { create;}
   //validation validatesalesorder on save { create; field salesorder; }
