@@ -1,0 +1,77 @@
+managed implementation in class zbp_r_sales_yjkim_hdr unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_SALES_YJKIM_HDR alias Sales
+persistent table ztsales_u_h
+draft table zdsales_u_h
+etag master lastdt
+lock master total etag lastdt
+authorization master ( global )
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( numbering : managed, readonly ) Uuid;
+  field ( readonly ) creationby, salesorder;
+  field ( mandatory ) customer_id;
+
+  determination CREATORDERNUM on save { create; }
+
+  mapping for ztsales_u_h
+    {
+      uuid        = uuid;
+      salesorder  = salesorder;
+      orderType   = order_type;
+      customer_id = customer_id;
+      soldtoparty = sold_to_party;
+      creationby  = creation_by;
+      creationdt  = creation_date;
+      lastdt      = last_dt;
+      status      = status;
+    }
+
+  association _Child { create; with draft; }
+
+}
+
+define behavior for ZR_SALES_YJKIM_ITEM alias Item
+persistent table ztsales_u_i
+draft table zdsales_u_i
+etag master lastdt
+lock dependent by _parent
+authorization dependent by _parent
+{
+  update;
+  delete;
+  field ( numbering : managed, readonly ) Uuid;
+  field ( readonly ) puuid, creationby, salesorder, itemno;
+
+  determination COPYCREATORDERNUM on save { create; }
+  determination CREATEITEMNO on modify { create; }
+
+  mapping for ztsales_u_i
+    {
+      uuid       = uuid;
+      puuid      = puuid;
+      salesorder = salesorder;
+      itemno     = item_no;
+      matnr      = matnr;
+      meins      = meins;
+      menge      = menge;
+      netamount  = netamount;
+      waerk      = waerk;
+      creationby = creation_by;
+      creationdt = creation_date;
+      lastdt     = last_dt;
+      status     = status;
+    }
+
+  association _parent { with draft; }
+}

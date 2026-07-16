@@ -1,0 +1,29 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZC_SALES_YJKIM_HDR alias Sales
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Activate;
+  use action Discard;
+  use action Edit;
+  use action Resume;
+  use action Prepare;
+
+  use association _Child { create; with draft; }
+}
+
+define behavior for ZC_SALES_YJKIM_ITEM alias Item
+use etag
+{
+  use update;
+  use delete;
+
+  use association _parent { with draft; }
+
+}

@@ -42,7 +42,7 @@ authorization master ( instance )
   // }
 
 
-  static action uploadexcel deep parameter ZD_EXCEL_YJKIM result [0..*] $self;
+  static action ( authorization : global ) uploadexcel deep parameter ZD_EXCEL_YJKIM result [0..*] $self;
   action getexchangerate; // result[1] $self;
 
   mapping for ztsales_yjkim_u

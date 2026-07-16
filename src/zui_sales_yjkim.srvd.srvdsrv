@@ -1,0 +1,5 @@
+@EndUserText.label: 'RAP TEST'
+define service ZUI_SALES_YJKIM {
+  expose ZC_SALES_YJKIM_HDR  as Sales;
+  expose ZC_SALES_YJKIM_ITEM as Item;
+}

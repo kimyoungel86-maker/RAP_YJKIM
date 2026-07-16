@@ -1,0 +1,4 @@
+@EndUserText.label: 'RAP TEST NO DRAFT'
+define service ZUI_SALES_YJKIM_D {
+  expose ZC_SALES_YJKIM_D;
+}
