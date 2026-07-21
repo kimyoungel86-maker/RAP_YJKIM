@@ -28,7 +28,7 @@ authorization master ( instance )
   //  field ( readonly : update ) salesorder;
 
   //  determination creatordernum on modify { create;}
-  //validation validatesalesorder on save { create; field salesorder; }
+//  validation validatesalesorder on save { create; field salesorder; }
 
   //  side effects { determination CREATORDERNUM  affects field salesorder; }
 

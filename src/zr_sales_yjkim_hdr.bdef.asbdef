@@ -12,17 +12,24 @@ authorization master ( global )
   update;
   delete;
 
+  determination CREATORDERNUM on save { create; }
+  validation VDCUSTOMER on save { create; field customer_id; }
+
   draft action Activate optimized;
   draft action Discard;
   draft action Edit;
   draft action Resume;
-  draft determine action Prepare;
+  draft determine action Prepare
+  {
+    validation VDCUSTOMER;
+    validation ITEM~MATCHECK;
+  }
 
   field ( numbering : managed, readonly ) Uuid;
   field ( readonly ) creationby, salesorder;
   field ( mandatory ) customer_id;
 
-  determination CREATORDERNUM on save { create; }
+
 
   mapping for ztsales_u_h
     {
@@ -55,6 +62,7 @@ authorization dependent by _parent
 
   determination COPYCREATORDERNUM on save { create; }
   determination CREATEITEMNO on modify { create; }
+  validation MATCHECK on save { create; field matnr; }
 
   mapping for ztsales_u_i
     {
