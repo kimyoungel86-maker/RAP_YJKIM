@@ -9,7 +9,7 @@ define view entity ZR_SALES_YJKIM_ITEM
   key uuid          as uuid,
       puuid         as puuid,
       salesorder    as salesorder,
-      item_no       as itemno,
+      itemno        as itemno,
       matnr         as matnr,
       meins         as meins,
       @Semantics.quantity.unitOfMeasure : 'meins'

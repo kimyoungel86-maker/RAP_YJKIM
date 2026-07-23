@@ -85,7 +85,7 @@ authorization dependent by _parent
       uuid       = uuid;
       puuid      = puuid;
       salesorder = salesorder;
-      itemno     = item_no;
+      itemno     = itemno;
       matnr      = matnr;
       meins      = meins;
       menge      = menge;
