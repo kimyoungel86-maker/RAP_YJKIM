@@ -29,6 +29,8 @@ define view entity ZC_SALES_YJKIM_ITEM
        }
       } ]
       waerk,
+      @Semantics.amount.currencyCode : 'waerk'
+      totamount     as totamount,
       @Semantics.user.createdBy: true
       creationby,
       creationdt,

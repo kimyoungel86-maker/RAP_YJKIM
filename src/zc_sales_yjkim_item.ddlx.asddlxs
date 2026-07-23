@@ -47,4 +47,8 @@ annotate entity ZC_SALES_YJKIM_ITEM with
   @UI.identification: [ { position: 50 } ]
   @EndUserText.label: 'Amt'
   netamount;
+  @UI.lineItem: [ { position: 60 } ]
+  @UI.identification: [ { position: 60 } ]
+  @EndUserText.label: 'TTL Amt'
+  totamount;
 }

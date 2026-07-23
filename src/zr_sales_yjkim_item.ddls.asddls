@@ -17,6 +17,8 @@ define view entity ZR_SALES_YJKIM_ITEM
       @Semantics.amount.currencyCode : 'waerk'
       netamount     as netamount,
       waerk         as waerk,
+      @Semantics.amount.currencyCode : 'waerk'
+      totamount     as totamount,
       @Semantics.user.createdBy: true
       creation_by   as creationby,
       creation_date as creationdt,

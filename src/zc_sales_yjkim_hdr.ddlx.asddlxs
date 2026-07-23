@@ -88,6 +88,15 @@ annotate entity ZC_SALES_YJKIM_HDR with
   @UI.identification: [ {
    position: 50
   } ]
+  @EndUserText.label: 'TTL Amount'
+  totamount;
+  @UI.lineItem: [ {
+  position: 60 ,
+  importance: #HIGH
+  } ]
+  @UI.identification: [ {
+   position: 60
+  } ]
   @EndUserText.label: 'Creation by'
   creationby;
 }

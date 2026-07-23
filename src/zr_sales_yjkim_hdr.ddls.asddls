@@ -15,6 +15,9 @@ define root view entity ZR_SALES_YJKIM_HDR
       @Semantics.user.createdBy: true
       creation_by   as creationby,
       creation_date as creationdt,
+      waerk         as waerk,
+      @Semantics.amount.currencyCode : 'waerk'
+      totamount     as totamount,
       @Semantics.systemDateTime.lastChangedAt: true
       last_dt       as lastdt,
       status        as status,

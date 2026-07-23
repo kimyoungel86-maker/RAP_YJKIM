@@ -12,8 +12,10 @@ authorization master ( global )
   update;
   delete;
 
+
   determination CREATORDERNUM on save { create; }
   validation VDCUSTOMER on save { create; field customer_id; }
+  //  determination SUMAMT on save { create; update; }
 
   draft action Activate optimized;
   draft action Discard;
@@ -23,10 +25,11 @@ authorization master ( global )
   {
     validation VDCUSTOMER;
     validation ITEM~MATCHECK;
+    //    determination SUMAMT;
   }
 
   field ( numbering : managed, readonly ) Uuid;
-  field ( readonly ) creationby, salesorder;
+  field ( readonly ) creationby, salesorder, totamount;
   field ( mandatory ) customer_id;
 
 
@@ -38,6 +41,8 @@ authorization master ( global )
       orderType   = order_type;
       customer_id = customer_id;
       soldtoparty = sold_to_party;
+      waerk       = waerk;
+      totamount   = totamount;
       creationby  = creation_by;
       creationdt  = creation_date;
       lastdt      = last_dt;
@@ -45,7 +50,10 @@ authorization master ( global )
     }
 
   association _Child { create; with draft; }
-
+  side effects
+  {
+    entity _Child affects field ( totamount,waerk ) ;
+  }
 }
 
 define behavior for ZR_SALES_YJKIM_ITEM alias Item
@@ -58,11 +66,19 @@ authorization dependent by _parent
   update;
   delete;
   field ( numbering : managed, readonly ) Uuid;
-  field ( readonly ) puuid, creationby, salesorder, itemno;
+  field ( readonly ) puuid, creationby, salesorder, itemno, totamount;
 
   determination COPYCREATORDERNUM on save { create; }
   determination CREATEITEMNO on modify { create; }
-  validation MATCHECK on save { create; field matnr; }
+  determination TotalAMT on modify { create; field netamount, menge; }
+  side effects
+  {
+    field netamount affects field totamount;
+    field menge     affects field totamount;
+    field totamount affects field _parent.totamount;
+  }
+
+  validation MATCHECK on save { create; update; field matnr; }
 
   mapping for ztsales_u_i
     {
@@ -75,6 +91,7 @@ authorization dependent by _parent
       menge      = menge;
       netamount  = netamount;
       waerk      = waerk;
+      totamount  = totamount;
       creationby = creation_by;
       creationdt = creation_date;
       lastdt     = last_dt;
