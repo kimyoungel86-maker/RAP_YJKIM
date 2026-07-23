@@ -1,0 +1,4 @@
+@EndUserText.label: 'RAP CUBE'
+define service ZUI_I_SALES_YJKIM_CUBE {
+  expose ZI_SALES_YJKIM_CUBE;
+}
